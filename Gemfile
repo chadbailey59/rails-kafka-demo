@@ -1,14 +1,24 @@
 source 'https://rubygems.org'
 
-
-gem 'rails', '4.2.6'
-gem 'pg', '~> 0.15'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bootstrap-sass-extras', github: 'doabit/bootstrap-sass-extras'
+gem 'bootstrap_form'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'font-awesome-sass', '~> 4.5.0'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'pg', '~> 0.15'
+gem 'quiet_assets'
+gem 'rails', '4.2.6'
+gem 'rails-admin-scaffold'
 gem 'rails_12factor', group: :production
-
+gem 'redcarpet'
+gem 'sass-rails', '~> 5.0'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap', '~> 1.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
