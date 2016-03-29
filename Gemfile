@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'attr_encrypted'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap-sass-extras', github: 'doabit/bootstrap-sass-extras'
 gem 'bootstrap_form'
