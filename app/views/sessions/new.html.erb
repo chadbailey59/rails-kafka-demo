@@ -1,0 +1,36 @@
+<!-- Container -->
+<div class="row">
+
+  <!-- Left side -->
+  <!-- Right side -->
+  <div class="col-md-6 col-md-offset-3">
+
+    <h1>Sign In to your account</h1>
+    <%= form_tag url: '/sign_in', class: 'form-signin' do %>
+
+      <div class="form-group w-icon">
+        <input type="text" name="email" id="email" class="form-control input-lg" placeholder="Username">
+        <span class="fa fa-user signin-form-icon"></span>
+      </div> <!-- / Username -->
+
+      <div class="form-group w-icon">
+        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
+        <span class="fa fa-lock signin-form-icon"></span>
+      </div> <!-- / Password -->
+
+      <div class="form-actions">
+        <%= submit_tag 'SIGN IN', class: 'signin-btn bg-primary' %>
+        <%= link_to 'Forgot your password?', '#', class: 'forgot-password' %>
+      </div> <!-- / .form-actions -->
+    </form>
+    <% end %>
+    <div class="not-a-member">
+      Not a member? <%= link_to 'Sign up now', new_user_path %>
+    </div>
+
+    <!-- / Form -->
+  </div>
+  <!-- Right side -->
+</div>
+<!-- / Container -->
+

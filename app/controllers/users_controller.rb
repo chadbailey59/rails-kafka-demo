@@ -1,48 +1,30 @@
 class UsersController < ApplicationController
+  before_filter :require_user!, only: [:me, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  def index
-    @users = User.all
-  end
 
-  # GET /users/1
-  def show
-  end
-
-  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
-  def edit
-  end
-
-  # POST /users
   def create
     @user = User.new(user_params)
-
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      sign_in @user
+      redirect_to root_path, notice: "User created."
     else
-      render :new
+      flash[:error] = "Sorry, I couldn't create your account: #{@user.errors.full_messages.join('; ')}"
+      render 'new'
     end
   end
 
-  # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to :back, notice: 'User updated.'
     else
+      flash[:error] = "Sorry, I couldn't update your account: #{@user.errors.full_messages.join('; ')}"
       render :edit
     end
-  end
-
-  # DELETE /users/1
-  def destroy
-    @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
   end
 
   private
@@ -51,8 +33,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :encrypted_password, :encrypted_password_salt, :encrypted_password_iv, :name)
+      attrs = [:name, :email, :password, :password_confirmation, :token]
+      params.require(:user).permit(*attrs)
     end
 end
